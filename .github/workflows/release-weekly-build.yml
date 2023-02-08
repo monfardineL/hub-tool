@@ -1,15 +1,15 @@
-# name: Release and Weekly Build
-# on:
-#   schedule:
-#     - cron: "0 0 * * SUN"
-#   workflow_dispatch:
-#     inputs:
-#       branch:
-#         description: 'Branch'
-#         required: true
-#         default: 'main'
-#       tag:
-#         description: 'Release Tag'
+name: Release and Weekly Build
+on:
+  #schedule:
+  #  - cron: "0 0 * * SUN"
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch'
+        required: true
+        default: 'main'
+      tag:
+        description: 'Release Tag'
 
 jobs:
   lint:
