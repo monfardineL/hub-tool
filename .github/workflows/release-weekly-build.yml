@@ -1,15 +1,15 @@
-name: Release and Weekly Build
-on:
-  schedule:
-    - cron: "0 0 * * SUN"
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch'
-        required: true
-        default: 'main'
-      tag:
-        description: 'Release Tag'
+# name: Release and Weekly Build
+# on:
+#   schedule:
+#     - cron: "0 0 * * SUN"
+#   workflow_dispatch:
+#     inputs:
+#       branch:
+#         description: 'Branch'
+#         required: true
+#         default: 'main'
+#       tag:
+#         description: 'Release Tag'
 
 jobs:
   lint:
@@ -71,7 +71,7 @@ jobs:
     needs: [build]
     strategy:
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [ubuntu-latest]
     defaults:
       run:
         shell: bash
@@ -123,5 +123,5 @@ jobs:
           artifacts: "dist/*/*"
           prerelease: true
           draft: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          #token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.event.inputs.tag }}
